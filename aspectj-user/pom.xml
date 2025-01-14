@@ -39,6 +39,24 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.tml</groupId>
+            <artifactId>aspectj-def</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.9.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.7</version>
+        </dependency>
     </dependencies>
 
 
@@ -61,6 +79,42 @@
                     <mainClass>com.tml.aspectj.user.AspectjUserApplication</mainClass>
                     <classifier>exec</classifier>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <version>1.14.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <complianceLevel>1.8</complianceLevel>
+                    <showWeaveInfo>true</showWeaveInfo>
+                    <Xlint>ignore</Xlint>
+                    <encoding>UTF-8</encoding>
+                    <aspectLibraries>
+                        <aspectLibrary>
+                            <groupId>com.tml</groupId>
+                            <artifactId>aspectj-def</artifactId>
+                        </aspectLibrary>
+                    </aspectLibraries>
+
+                    <weaveDependencies>
+                        <dependency>
+                            <groupId>com.tml</groupId>
+                            <artifactId>aspectj-def</artifactId>
+                        </dependency>
+                    </weaveDependencies>
+
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
             </plugin>
         </plugins>
     </build>

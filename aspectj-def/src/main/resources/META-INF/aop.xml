@@ -1,0 +1,14 @@
+<!DOCTYPE aspectj PUBLIC "-//AspectJ//DTD//EN" "https://www.eclipse.org/aspectj/dtd/aspectj.dtd">
+<aspectj>
+
+    <weaver>
+        <!-- 只织入特定包下的类 -->
+        <include within="com.tml.aspectj.def..*"/>
+    </weaver>
+
+    <aspects>
+        <!-- 织入这个切面 -->
+        <aspect name="com.tml.aspectj.def.aspect.TradeLogAspect"/>
+    </aspects>
+
+</aspectj>
